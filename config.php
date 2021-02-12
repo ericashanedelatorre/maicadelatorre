@@ -1,9 +1,10 @@
 <?php
 	 
 $dbhost = 'localhost';
-	$dbname = 'mydb';
+	$dbname = 'famebirthday';
 	$dbuser = 'root';
 	$dbpass = '';
 	$mysqli = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
+
 
 ?> 

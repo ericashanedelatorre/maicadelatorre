@@ -1,7 +1,6 @@
 <?php
 
 	include_once("config.php");
-
 ?>
 
 <!DOCTYPE html>
@@ -9,67 +8,47 @@
 <head>
 	<meta charset="UTF-8">
 	<meta charset="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<title>Add Script</title>
 	<style>
+		body{
+			background-color: lightgray;
+		}
 
-	body {
-		background-color: lightgray;
-	}
+
 
 	</style>
-
 </head>
 <body>
 
 <?php
 
 	if (isset($_POST['submit'])){
-		$iso = mysqli_real_escape_string($mysqli, $_POST['iso']);
-		$name = mysqli_real_escape_string($mysqli, $_POST['name']);
-		$nicename = mysqli_real_escape_string($mysqli, $_POST['nicename']);
-		$iso3 = mysqli_real_escape_string($mysqli, $_POST['iso3']);
-		$numcode = mysqli_real_escape_string($mysqli, $_POST['numcode']);
-		$phonecode = mysqli_real_escape_string($mysqli, $_POST['phonecode']);
+		$birthday = mysqli_real_escape_string($mysqli, $_POST['birthday']);
+		$Name = mysqli_real_escape_string($mysqli, $_POST['Name']);
 		
 
-		if( empty($iso) || empty($name) || empty($nicename) ||empty($iso3) || empty($numcode) || empty($phonecode) ){
+		if( empty($birthday) || empty($Name)){
 
-			if(empty($iso)){
-				echo "<font color='red'> ISO field is empty. </font><br/>";
+			if(empty($birthday)){
+				echo "<font color='red'> Birthday field is empty. </font><br/>";
 			}
-			if(empty($name)){
+			if(empty($Name)){
 				echo "<font color='red'> Name field is empty. </font><br/>";
 			}
-			if(empty($nicename)){
-				echo "<font color='red'> Nicename field is empty. </font><br/>";
-			}
-			if(empty($iso3)){
-				echo "<font color='red'> ISO3 field is empty. </font><br/>";
-			}
-			if(empty($numcode)){
-				echo "<font color='red'> Numcode field is empty. </font><br/>";
-			}
-			if(empty($phonecode)){
-				echo "<font color='red'> Phonecode field is empty. </font><br/>";
-			}
-		
-		
-			echo "<br/><a href='javascript:self.history.back();' >Go Back</a>";
+			echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
 
 		} 
 		else {
 
-		$result = mysqli_query($mysqli, "INSERT INTO country(iso, name, nicename, iso3, numcode, phonecode) VALUES ('$iso', '$name', '$nicename', '$iso3', '$numcode', '$phonecode')");
+		$result = mysqli_query($mysqli, "INSERT INTO birthdays(birthday, Name) VALUES ('$birthday', '$Name')");
 		echo "<font color='green'> Data Added Successfully.";
 		echo "<br><a href='index.php'> View Result </a>";
 
 		}
+
+
 	}
-
 ?>
-
-<script src="js/bootstrap.bundle.min.js">
 
 </body>
 </html>
